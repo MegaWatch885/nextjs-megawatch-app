@@ -31,22 +31,6 @@ export default function moviesPost() {
     const moviesData = publishedData.filter(ab => ab.titlecategory === 'movies');
 
 
-
-    // Scroll left right data 
-    const [scrollPosition, setScrollPosition] = useState(0);
-
-    const scrollLeft = () => {
-        const scrollContainer = document.querySelector(".scrollcards")
-        scrollContainer.scrollLeft -= 300;
-    }
-
-    const scrollRight = () => {
-        const scrollContainer = document.querySelector(".scrollcards")
-        scrollContainer.scrollRight += 500;
-    }
-
-
-
     //  Share in whatsapp app
     const [showShareLinks, setShowShareLinks] = useState(false);
     const sharelinkref = useRef(null);
@@ -239,40 +223,7 @@ export default function moviesPost() {
                     </div>
 
                 </div>
-                <div className="raletedmovies">
-                    <h3>LATEST MOVIES :-</h3>
-                    <div className="scrollcards">
-                        {moviesData.slice(0, 4).map((movie) => (
-                            <div className="card">
-                                <Link href={`/movies/${movie.slug}`}>
-                                    <div className="cardimg">
-                                        <img src={movie.smposter} alt="movie" loading="lazy" />
-                                    </div>
-                                    <div className="contents">
-                                        <h5>{movie.title}</h5>
-                                        <h6>
-                                            <span>{movie.year}</span>
-                                            <div className="rate">
-                                                <i className="cardfas">
-                                                    <FaHeart />
-                                                </i>
-                                                <i className="cardfas">
-                                                    <FaEye />
-                                                </i>
-                                                <i className="cardfas">
-                                                    <FaStar />
-                                                </i>
-                                                <h6>{movie.rating}</h6>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-
+            
             </div>
             <div className="sharelinks" style={{ display: showShareLinks ? 'flex' : 'none' }}>
                 <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://www.megamovies.in/${router.query.slug}`}`} target="_blank"><FaInstagram /></Link></div>

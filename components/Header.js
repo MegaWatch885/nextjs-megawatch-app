@@ -144,7 +144,7 @@ export default function Header() {
                                             </div>
                                             <div className="searchbarinfo">
                                                 <h5>{movie.title}</h5>
-                                                <h4>Rating: <FaStar/><span>{movie.rating}</span></h4>
+                                                <h4>Rating: <FaStar /><span>{movie.rating}</span></h4>
                                                 <h4>Release Year: {movie.year}</h4>
                                             </div>
 
