@@ -3503,7 +3503,7 @@ footer {
 
 @media screen and (max-width:500px) {
     .slideimagebx {
-        height: 280px;
+        height: 300px;
     }
 
     .slideimagebx img {
@@ -3534,7 +3534,7 @@ footer {
 
 @media screen and (max-width:400px) {
     .slideimagebx {
-        height: auto;
+        height: 300px;
     }
 
     .slideimagebx img {
