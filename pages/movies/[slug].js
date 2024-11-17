@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { CiPlay1 } from "react-icons/ci";
 import Loader from "@/components/Loader";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Spinner from "@/components/Spinner";
 
 
 
@@ -20,7 +21,7 @@ export default function moviesPost() {
 
     // use hook
 
-    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
     const { allMovie } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
@@ -61,12 +62,14 @@ export default function moviesPost() {
             <Head>
                 <title> {alldata && alldata[0]?.slug} Free </title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/3d-movie.ico"/>
+                <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
-            <div className="slideimagebx">
-                <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
-            </div>
+            {loading ? <Loader /> : <>
+                <div className="slideimagebx">
+                    <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
+                </div>
+            </>}
 
 
             <div className="mainmoviebx" id="flex" ref={sharelinkref}>
@@ -223,7 +226,7 @@ export default function moviesPost() {
                     </div>
 
                 </div>
-            
+
             </div>
             <div className="sharelinks" style={{ display: showShareLinks ? 'flex' : 'none' }}>
                 <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://www.megamovies.in/${router.query.slug}`}`} target="_blank"><FaInstagram /></Link></div>
