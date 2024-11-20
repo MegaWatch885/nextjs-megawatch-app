@@ -6,31 +6,68 @@ import { FaBookmark, FaCheck, FaEye, FaFacebookSquare, FaHeart, FaImdb, FaInstag
 import { FaShareFromSquare } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { CiPlay1 } from "react-icons/ci";
-import Loader from "@/components/Loader";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Spinner from "@/components/Spinner";
-
-
-
 
 export default function moviesPost() {
 
     const router = useRouter();
 
     const { slug } = router.query;
+    const { titlecategory } = router.query;
 
     // use hook
 
-    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie } = useFetchData('/api/getmovies')
+    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { allMovie, loading } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
     const publishedData = allMovie.filter(ab => ab.status === "publish");
 
-    // now filter data by movies
-    const moviesData = publishedData.filter(ab => ab.titlecategory === 'movies');
+    // Filtered Data
 
+    // filter for published movies required
+
+
+
+    //this function for filter by genre
+
+    const [selectedGenre, setSelectedGenre] = useState('all movies');
+
+    const genres = ['all movies', 'action', 'adventure', 'animation', 'comedy', 'drama', 'crime', 'fantasy', 'horror', 'romance', 'thriller', 'science_fiction'];
+
+    const categories = ["bollywood", "hollywood", "south", "gujarati", "marvel_studio", "tv_shows", "web_series"];
+
+    const handleGenreClick = (genre) => {
+        setSelectedGenre(genre);
+    }
+
+
+
+
+    const filteredData = publishedData.filter(movie => {
+        if (selectedGenre === 'all movies') return true;
+        if (categories.includes(selectedGenre)) {
+            return movie.category === selectedGenre;
+
+        } else {
+            return movie.genre.includes(selectedGenre);
+        }
+    })
+
+
+    // scroll left & right data
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const scrollLeft = () => {
+        const scrollContainer = document.querySelector(".scrollcards");
+        scrollContainer.scrollLeft -= 300;
+    }
+
+    const scrollRight = () => {
+        const scrollContainer = document.querySelector(".scrollcards");
+        scrollContainer.scrollRight += 500;
+    }
 
     //  Share in whatsapp app
     const [showShareLinks, setShowShareLinks] = useState(false);
@@ -62,10 +99,9 @@ export default function moviesPost() {
             <Head>
                 <title> {alldata && alldata[0]?.slug} Free </title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
-            {loading ? <Loader /> : <>
+            {loading ? <Spinner /> : <>
                 <div className="slideimagebx">
                     <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
                 </div>
@@ -88,6 +124,7 @@ export default function moviesPost() {
 
                         </div>
                     </div>
+
                     <div className="rating">
                         <h3>Title</h3>
                         <h4 >{alldata && alldata[0]?.title}</h4>
@@ -116,20 +153,26 @@ export default function moviesPost() {
                         <h4 >{alldata && alldata[0]?.quaility}</h4>
                     </div>
 
+
                     <div className="screenshots">
 
                         <h3>SCREENSHOTS :-</h3>
+                        <center>
 
-                        <section>
-                            <img src={alldata && alldata[0]?.sshot1} alt="no" ></img>
-                            <img src={alldata && alldata[0]?.sshot2} alt="no"></img>
-                            <img src={alldata && alldata[0]?.sshot3} alt="no"></img>
-                            <img src={alldata && alldata[0]?.sshot4} alt="no"></img>
-                        </section>
+                            <section>
+                                <img src={alldata && alldata[0]?.sshot1} alt="no" ></img>
+                                <img src={alldata && alldata[0]?.sshot2} alt="no"></img>
+                                <img src={alldata && alldata[0]?.sshot3} alt="no"></img>
+                                <img src={alldata && alldata[0]?.sshot4} alt="no"></img>
+                            </section>
+
+                        </center>
 
                     </div>
 
+
                 </div>
+
 
 
                 {/* Right Data */}
@@ -224,15 +267,17 @@ export default function moviesPost() {
                         </section>
 
                     </div>
-
                 </div>
 
+                <div className="sharelinks" style={{ display: showShareLinks ? 'flex' : 'none' }}>
+                    <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://megawatch.in/movies/${router.query.slug}`}`} target="_blank"><FaInstagram /></Link></div>
+                    <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://megawatch.in/movies/${router.query.slug}`}`} target="_blank"><FaFacebookSquare /></Link></div>
+                    <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://megawatch.in/movies/${router.query.slug}`}`} target="_blank"><FaWhatsappSquare /></Link></div>
+                </div>
             </div>
-            <div className="sharelinks" style={{ display: showShareLinks ? 'flex' : 'none' }}>
-                <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://www.megamovies.in/${router.query.slug}`}`} target="_blank"><FaInstagram /></Link></div>
-                <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://www.megamovies.in/${router.query.slug}`}`} target="_blank"><FaFacebookSquare /></Link></div>
-                <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://www.megamovies.in/${router.query.slug}`}`} target="_blank"><FaWhatsappSquare /></Link></div>
-            </div>
+
+
+
 
         </>
 
