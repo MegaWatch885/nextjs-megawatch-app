@@ -6,6 +6,7 @@ import { FaBookmark, FaCheck, FaEye, FaFacebookSquare, FaHeart, FaImdb, FaInstag
 import { FaShareFromSquare } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import movies from "../../movies";
+import Loader from "@/components/Loader";
 
 export default function download4k() {
 
@@ -15,8 +16,8 @@ export default function download4k() {
 
     // use hook
 
-    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie, loading } = useFetchData('/api/getmovies')
+    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { allMovie } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
@@ -38,9 +39,13 @@ export default function download4k() {
                 <link rel="icon" href="/3d-movie.ico"/>
             </Head>
 
-            <div className="slideimagebx">
-                <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
-            </div>
+            {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
+                <div className="slideimagebx">
+                    <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
+                </div>
+            </>}
+
+
             <div className="mainmoviebx flex-center" >
 
                 <section className="downloadsec">

@@ -5,6 +5,7 @@ import useFetchData from "@/hooks/useFetchData";
 import { FaBookmark, FaCheck, FaEye, FaFacebookSquare, FaHeart, FaImdb, FaInstagram, FaStar, FaThumbsDown, FaThumbsUp, FaWhatsappSquare } from "react-icons/fa";
 import { FaShareFromSquare } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
+import Loader from "@/components/Loader";
 
 export default function download720p() {
 
@@ -14,8 +15,8 @@ export default function download720p() {
 
     // use hook
 
-    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie, loading } = useFetchData('/api/getmovies')
+    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { allMovie } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
@@ -37,9 +38,11 @@ export default function download720p() {
             <link rel="icon" href="/3d-movie.ico"/>
             </Head>
 
-            <div className="slideimagebx">
-                <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
-            </div>
+            {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
+                <div className="slideimagebx">
+                    <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
+                </div>
+            </>}
 
             <div className="mainmoviebx flex-center" >
 

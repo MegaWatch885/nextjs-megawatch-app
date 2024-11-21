@@ -7,6 +7,7 @@ import { FaShareFromSquare } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { CiPlay1 } from "react-icons/ci";
 import Spinner from "@/components/Spinner";
+import Loader from "@/components/Loader";
 
 export default function moviesPost() {
 
@@ -17,8 +18,8 @@ export default function moviesPost() {
 
     // use hook
 
-    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie, loading } = useFetchData('/api/getmovies')
+    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { allMovie,  } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
@@ -101,9 +102,9 @@ export default function moviesPost() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
-            {loading ? <Spinner /> : <>
+            {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
                 <div className="slideimagebx">
-                    <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
+                    <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
                 </div>
             </>}
 

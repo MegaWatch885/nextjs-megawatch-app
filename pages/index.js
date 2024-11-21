@@ -220,6 +220,11 @@ export default function Home() {
                   slidesPerView: 2,
                   spaceBetween: 10,
                 },
+
+                344: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
               }}
             >
               <div className="scrollcards">

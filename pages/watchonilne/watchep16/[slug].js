@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import useFetchData from "@/hooks/useFetchData";
+import Loader from "@/components/Loader";
 
 
 
@@ -12,8 +13,8 @@ export default function watchep16() {
 
     // use hook
 
-    const { alldata, Loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie, loading } = useFetchData('/api/getmovies')
+    const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
+    const { allMovie } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
@@ -35,9 +36,12 @@ export default function watchep16() {
                 <link rel="icon" href="/3d-movie.ico"/>
             </Head>
 
-            <div className="slideimagebx">
-                <img src={alldata && alldata[0]?.bgposter} alt="no image" loading="lazy" />
-            </div>
+            {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
+                <div className="slideimagebx">
+                    <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
+                </div>
+            </>}
+
             <div className="mainmoviebx flex-center" id="flex">
 
                 <div className="watchonlinemovie">
