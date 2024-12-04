@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import useFetchData from "@/hooks/useFetchData";
-import { FaBookmark, FaCheck, FaEye, FaFacebookSquare, FaHeart, FaImdb, FaInstagram, FaStar, FaThumbsDown, FaThumbsUp, FaWhatsappSquare } from "react-icons/fa";
+import { FaArrowRight, FaBookmark, FaCheck, FaEye, FaFacebookSquare, FaHeart, FaImdb, FaInstagram, FaStar, FaThumbsDown, FaThumbsUp, FaWhatsappSquare } from "react-icons/fa";
 import { FaShareFromSquare } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { CiPlay1 } from "react-icons/ci";
@@ -19,42 +19,11 @@ export default function moviesPost() {
     // use hook
 
     const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie,  } = useFetchData('/api/getmovies')
+    const { allMovie, } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
     const publishedData = allMovie.filter(ab => ab.status === "publish");
-
-    // Filtered Data
-
-    // filter for published movies required
-
-
-
-    //this function for filter by genre
-
-    const [selectedGenre, setSelectedGenre] = useState('all movies');
-
-    const genres = ['all movies', 'action', 'adventure', 'animation', 'comedy', 'drama', 'crime', 'fantasy', 'horror', 'romance', 'thriller', 'science_fiction'];
-
-    const categories = ["bollywood", "hollywood", "south", "gujarati", "marvel_studio", "tv_shows", "web_series"];
-
-    const handleGenreClick = (genre) => {
-        setSelectedGenre(genre);
-    }
-
-
-
-
-    const filteredData = publishedData.filter(movie => {
-        if (selectedGenre === 'all movies') return true;
-        if (categories.includes(selectedGenre)) {
-            return movie.category === selectedGenre;
-
-        } else {
-            return movie.genre.includes(selectedGenre);
-        }
-    })
 
 
     // scroll left & right data
@@ -153,6 +122,10 @@ export default function moviesPost() {
                         <h3>QUALITY</h3>
                         <h4 >{alldata && alldata[0]?.quaility}</h4>
                     </div>
+                    <div className="rating">
+                        <h3>SIZE</h3>
+                        <h4 >{alldata && alldata[0]?.size}</h4>
+                    </div>
 
 
                     <div className="screenshots">
@@ -173,8 +146,6 @@ export default function moviesPost() {
 
 
                 </div>
-
-
 
                 {/* Right Data */}
                 <div className="rightdata">
@@ -245,10 +216,10 @@ export default function moviesPost() {
                                 <h2>G-Drive [GDToT] Download Links</h2>
                                 <div className="downloadlinks">
 
-                                    <a href={`/downloadpage/downloadpage480p/${slug}`}>Download(480p) Quality </a>
-                                    <a href={`/downloadpage/downloadpage720p/${slug}`}>Download(720p) Quality </a>
-                                    <a href={`/downloadpage/downloadpage1080p/${slug}`}>Download(1080p) Quality </a>
-                                    <a href={`/downloadpage/downloadpage4k/${slug}`}>Download(4k) Quality </a>
+                                    <a href={`/downloadpage/downloadpage480p/${slug}`}>Download(480p) - ({alldata && alldata[0]?.size480p})</a>
+                                    <a href={`/downloadpage/downloadpage720p/${slug}`}>Download(720p) - ({alldata && alldata[0]?.size720p})</a>
+                                    <a href={`/downloadpage/downloadpage1080p/${slug}`}>Download(1080p) - ({alldata && alldata[0]?.size1080p})</a>
+                                    <a href={`/downloadpage/downloadpage4k/${slug}`}>Download(4k) - ({alldata && alldata[0]?.size4k})</a>
 
 
 
@@ -269,6 +240,59 @@ export default function moviesPost() {
 
                     </div>
                 </div>
+
+                {/* Latest Movies */}
+                <div className="latest">
+                    <h3>Latest Uploads :- </h3>
+                </div>
+
+                <div className="moviescontainer">
+                    {loading ? <div className="scrollcardssec flex flex-center h-15v"><Loader /></div> : <>
+                        {publishedData.length === 0 ? <p className="nodatafound">No Movie Found</p> : <>
+                            {publishedData.slice(0, 8).map((movie) => (
+                                <div className="card" key={movie._id}>
+                                    <Link href={`/movies/${movie.slug}`}>
+                                        <div className="cardimg">
+                                            <img src={movie.smposter} alt="movie" loading="lazy" />
+                                        </div>
+                                        <div className="contents">
+                                            <h5>{movie.title}</h5>
+                                            <h6>
+                                                <span>{movie.year}</span>
+                                                <div className="rate">
+                                                    <i className="cardfas">
+                                                        <FaHeart />
+                                                    </i>
+                                                    <i className="cardfas">
+                                                        <FaEye />
+                                                    </i>
+                                                    <i className="cardfas">
+                                                        <FaStar />
+                                                    </i>
+                                                    <h6>{movie.rating}</h6>
+                                                </div>
+                                            </h6>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+
+                        </>}
+                    </>}
+                </div>
+
+
+
+                <div className="nextpagelink">
+                    <Link href='/all'>
+                        <button className="cssbuttons_io_button">All Latest Uploads
+                            <div className="icon">
+                                <FaArrowRight />
+                            </div>
+                        </button>
+                    </Link>
+                </div>
+
 
                 <div className="sharelinks" style={{ display: showShareLinks ? 'flex' : 'none' }}>
                     <div className="svg"><Link href={`https://api.whatsapp.com/send?text=${`https://megawatch.in/movies/${router.query.slug}`}`} target="_blank"><FaInstagram /></Link></div>

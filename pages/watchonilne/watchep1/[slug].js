@@ -1,15 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import useFetchData from "@/hooks/useFetchData";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autopay, Autoplay } from 'swiper/modules';
 import Loader from "@/components/Loader";
 import Link from "next/link";
-import { FaAngleDoubleUp, FaEye, FaFilm, FaHeart, FaStar } from "react-icons/fa";
-import { RiMovie2Fill, RiMovieFill } from "react-icons/ri";
-import { FaClapperboard } from "react-icons/fa6";
-import { BiCameraMovie } from "react-icons/bi";
-import { GiGhost } from "react-icons/gi";
+import { FaArrowRight, FaEye, FaHeart, FaStar } from "react-icons/fa";
 
 
 
@@ -22,11 +16,12 @@ export default function watchep1() {
     // use hook
 
     const { alldata, loading } = useFetchData(`/api/getmovies?slug=${slug}`)
-    const { allMovie,  } = useFetchData('/api/getmovies')
+    const { allMovie, } = useFetchData('/api/getmovies')
 
     // filter for published movies requires
 
     const publishedData = allMovie.filter(ab => ab.status === "publish");
+    const seriesData = publishedData.filter(ab => ab.titlecategory === 'series');
 
     // Filtered Data
 
@@ -38,23 +33,25 @@ export default function watchep1() {
             <title>{alldata && alldata[0]?.title}-Online-Watch-links</title>
             <meta name="description" content="Next Js Movie App" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/3d-movie.ico"/>
+            <link rel="icon" href="/3d-movie.ico" />
         </Head>
 
         {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
-                <div className="slideimagebx">
-                    <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
-                </div>
-            </>}
+            <div className="slideimagebx">
+                <img src={alldata && alldata[0]?.bgposter} alt="movie" loading="lazy" />
+            </div>
+        </>}
 
 
         <div className="mainmoviebx flex-center" id="flex">
 
             <div className="watchonlinemovie">
 
-                <h2 className="movietrailer" id="movietrailer"> {alldata && alldata[0]?.title} - (Ep - 01) Watch Online Here</h2>
+                <h2 className="movietrailer" id="movietrailer"> {alldata && alldata[0]?.title} - (Ep - 01) Streaming Here</h2>
                 <p className="uppercase">Genre : {alldata && alldata[0]?.genre.join(', ')}</p>
+                <p className="uppercase">Language : {alldata && alldata[0]?.language}</p>
                 <p className="uppercase">Total Episode's :- {alldata && alldata[0]?.duration}</p>
+
 
 
                 <center>
@@ -116,6 +113,60 @@ export default function watchep1() {
                 </div>
 
 
+            </div>
+
+        </div>
+
+        {/* Latest Movies */}
+        <div>
+
+            <div className="latest">
+                <h3>Latest Series :- </h3>
+            </div>
+
+            <div className="moviescontainer">
+                {loading ? <div className="scrollcardssec flex flex-center h-15v"><Loader /></div> : <>
+                    {seriesData.length === 0 ? <p className="nodatafound">No Movie Found</p> : <>
+                        {seriesData.slice(0, 8).map((movie) => (
+                            <div className="card" key={movie._id}>
+                                <Link href={`/movies/${movie.slug}`}>
+                                    <div className="cardimg">
+                                        <img src={movie.smposter} alt="movie" loading="lazy" />
+                                    </div>
+                                    <div className="contents">
+                                        <h5>{movie.title}</h5>
+                                        <h6>
+                                            <span>{movie.year}</span>
+                                            <div className="rate">
+                                                <i className="cardfas">
+                                                    <FaHeart />
+                                                </i>
+                                                <i className="cardfas">
+                                                    <FaEye />
+                                                </i>
+                                                <i className="cardfas">
+                                                    <FaStar />
+                                                </i>
+                                                <h6>{movie.rating}</h6>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+
+                    </>}
+                </>}
+            </div>
+
+            <div className="nextpagelink">
+                <Link href='/series'>
+                    <button className="cssbuttons_io_button">All Latest Series
+                        <div className="icon">
+                            <FaArrowRight />
+                        </div>
+                    </button>
+                </Link>
             </div>
 
         </div>

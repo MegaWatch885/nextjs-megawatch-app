@@ -2,6 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import useFetchData from "@/hooks/useFetchData";
 import Loader from "@/components/Loader";
+import Link from "next/link";
+import { FaArrowRight, FaEye, FaHeart, FaStar } from "react-icons/fa";
 
 
 
@@ -33,7 +35,7 @@ export default function watchmovieonline() {
 
             <Head>
                 <title>{alldata && alldata[0]?.title}-Online-Watch-links</title>
-                <link rel="icon" href="/3d-movie.ico"/>
+                <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
             {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
@@ -46,8 +48,10 @@ export default function watchmovieonline() {
 
                 <div className="watchonlinemovie">
 
-                    <h2 id="movietrailer" className='movietrailer'> {alldata && alldata[0]?.title} Movie Watch Online Here</h2>
+                    <h2 id="movietrailer" className='movietrailer'> {alldata && alldata[0]?.title} Movie Streaming Here</h2>
                     <p className="uppercase">Genre : {alldata && alldata[0]?.genre.join(', ')}</p>
+                    <p className="uppercase">Language : {alldata && alldata[0]?.language}</p>
+                    <p className="uppercase">Duration : {alldata && alldata[0]?.duration}</p>
 
                     <center>
                         <iframe width="80%" height="420"
@@ -60,6 +64,59 @@ export default function watchmovieonline() {
 
             </div>
 
+            {/* Latest Movies */}
+            <div>
+
+                <div className="latest">
+                    <h3>Latest Movies :- </h3>
+                </div>
+
+                <div className="moviescontainer">
+                    {loading ? <div className="scrollcardssec flex flex-center h-15v"><Loader /></div> : <>
+                        {publishedData.length === 0 ? <p className="nodatafound">No Movie Found</p> : <>
+                            {publishedData.slice(0, 8).map((movie) => (
+                                <div className="card" key={movie._id}>
+                                    <Link href={`/movies/${movie.slug}`}>
+                                        <div className="cardimg">
+                                            <img src={movie.smposter} alt="movie" loading="lazy" />
+                                        </div>
+                                        <div className="contents">
+                                            <h5>{movie.title}</h5>
+                                            <h6>
+                                                <span>{movie.year}</span>
+                                                <div className="rate">
+                                                    <i className="cardfas">
+                                                        <FaHeart />
+                                                    </i>
+                                                    <i className="cardfas">
+                                                        <FaEye />
+                                                    </i>
+                                                    <i className="cardfas">
+                                                        <FaStar />
+                                                    </i>
+                                                    <h6>{movie.rating}</h6>
+                                                </div>
+                                            </h6>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+
+                        </>}
+                    </>}
+                </div>
+
+                <div className="nextpagelink">
+                    <Link href='/movies'>
+                        <button className="cssbuttons_io_button">All Latest Movies
+                            <div className="icon">
+                                <FaArrowRight />
+                            </div>
+                        </button>
+                    </Link>
+                </div>
+
+            </div>
 
         </>
 

@@ -10,13 +10,11 @@ import Loader from "@/components/Loader";
 import Link from "next/link";
 import { FaAngleDoubleUp, FaArrowRight, FaCheck, FaDownload, FaEye, FaFilm, FaHeart, FaPhotoVideo, FaPlug, FaPlus, FaStar } from "react-icons/fa";
 import { FaClapperboard, FaLandMineOn } from "react-icons/fa6";
-import category from "./genre";
 import WelcomeAnimation from "@/components/WelcomeAnimation";
 import { RiMovie2Fill, RiMovieFill } from "react-icons/ri";
 import { GiGhost, GiMagicBroom, GiMagickTrick } from "react-icons/gi";
 import { BiCameraMovie } from "react-icons/bi";
-import { MdLocalMovies, MdOutlineLocalMovies } from "react-icons/md";
-import Genrecard from "@/components/Genrecard";
+
 
 
 
@@ -55,7 +53,7 @@ export default function Home() {
 
   const [selectedGenre, setSelectedGenre] = useState('all movies');
 
-  const genres = ['all movies', 'action', 'adventure', 'animation', 'comedy', 'drama', 'crime', 'fantasy', 'horror', 'romance', 'thriller', 'science_fiction'];
+  const genres = ['all movies', 'action', 'adventure', 'animation', 'comedy', 'drama', 'crime', 'fantasy', 'horror', 'romance', 'thriller', 'science_fiction', 'korean_drama', 'cheinese_drama'];
 
   const categories = ["bollywood", "hollywood", "south", "gujarati", "marvel_studio", "tv_shows", "web_series"];
 
