@@ -119,6 +119,10 @@ export default function moviesPost() {
                         <h4 >{alldata && alldata[0]?.year}</h4>
                     </div>
                     <div className="rating">
+                        <h3>LANGAUAGE</h3>
+                        <h4 >{alldata && alldata[0]?.language}</h4>
+                    </div>
+                    <div className="rating">
                         <h3>QUALITY</h3>
                         <h4 >{alldata && alldata[0]?.quaility}</h4>
                     </div>

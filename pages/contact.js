@@ -1,10 +1,17 @@
+"use client"
+
 import Link from "next/link";
 import { FaArrowDown, FaYoutube } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { AiFillSetting } from "react-icons/ai";
 import { RiTelegramLine } from "react-icons/ri";
+import { Metadata } from 'next';
 
+export const metadata = {
+    title: 'MegaWatch - Contact Us',
+    description: 'If Any Query Please Connect With Me By Mail',
+    }
 
 export default function contact() {
     return <>

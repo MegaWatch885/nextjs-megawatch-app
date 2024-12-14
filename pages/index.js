@@ -17,7 +17,6 @@ import { BiCameraMovie } from "react-icons/bi";
 
 
 
-
 export default function Home() {
 
   // fetch data with usehook
@@ -74,16 +73,17 @@ export default function Home() {
     }
   })
 
-
-
-
-
   return (
 
     <>
       <Head>
-        <title>MegaWatch | Rk</title>
+        <title>MegaWatch - Download Latest Movies & Series</title>
+        <meta name="description" content="Download & Streaming Latest Movies & Web Series For Free" />
+        <meta name="keywords" content="MegaWatch, Megawatch, megawatch, megawatch.in, Megawatch.in, MegaWatch.in latest movies download, bollywood movies download, latest series download "/>
+        <meta property="og:title" content="MegaWatch | Rk" />
+        <meta property="og:description" content="You Can Latest Movies Straeming & Downloading Here" />
         <link rel="icon" href="/3d-movie.ico"/>
+        <meta name="monetag" content="2ee5866ef88d462738787d3b34732eb7"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
