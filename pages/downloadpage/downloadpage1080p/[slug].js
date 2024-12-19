@@ -32,7 +32,7 @@ export default function download1080p() {
         <>
 
             <Head>
-                <title>{alldata && alldata[0]?.title}-Download(1080p)-Quality-Links</title>
+                <title>{alldata && alldata[0]?.title} - 1080p Links</title>
                 <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
@@ -48,11 +48,11 @@ export default function download1080p() {
                     <h3>Download(1080p) Links - ({alldata && alldata[0]?.size1080p})</h3>
                     <div className="downloadlinks1">
 
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy1080p}`}> Dropgalaxy </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever1080p}`}>Upload4ever </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar1080p}`}>Uploadrar </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up1080p}`}>Mega4up </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady1080p}`}>Uploady </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy1080p}`}> Server - 1 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever1080p}`}>Server - 2 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar1080p}`}>Server - 3 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up1080p}`}>Server - 4 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady1080p}`}>Server - 5 </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkGdrive1080p}`}>G-Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkPhotojin1080p}`}>Hub Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkHdcloud1080p}`}>HD Cloud </a>

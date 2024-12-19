@@ -24,7 +24,7 @@ export default function download4k() {
         <>
 
             <Head>
-                <title>{alldata && alldata[0]?.title}-Download(4k)-Quality-Links</title>
+                <title>{alldata && alldata[0]?.title} - 4k Links</title>
                 <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
@@ -41,11 +41,11 @@ export default function download4k() {
                     <h3>Download(4k) Links - ({alldata && alldata[0]?.size4k})</h3>
                     <div className="downloadlinks1">
 
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy4k}`}> Dropgalaxy </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever4k}`}>Upload4ever </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar4k}`}>Uploadrar </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up4k}`}>Mega4up </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady4k}`}>Uploady </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy4k}`}> Server - 1 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever4k}`}>Server - 2 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar4k}`}>Server - 3 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up4k}`}>Server - 4 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady4k}`}>Server - 5 </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkGdrive4k}`}>G-Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkPhotojin4k}`}>Hub Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkHdcloud4k}`}>HD Cloud </a>

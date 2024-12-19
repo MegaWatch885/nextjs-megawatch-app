@@ -31,7 +31,7 @@ export default function download480p() {
         <>
 
             <Head>
-                <title>{alldata && alldata[0]?.title}-Download(480p)-Quality-Links</title>
+                <title>{alldata && alldata[0]?.title} - 480p Links</title>
                 <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
@@ -47,11 +47,11 @@ export default function download480p() {
                 <section className="downloadsec">
                     <h3>Download(480p) Links - ({alldata && alldata[0]?.size480p})</h3>
                     <div className="downloadlinks1">
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy480p}`}  >Dropgalaxy </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever480p}`}>Upload4ever </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar480p}`}>Uploadrar </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up480p}`}  >Mega4up </a>
-                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady480p}`}>Uploady </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkDropgalaxy480p}`}  >Server - 1 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUpload4ever480p}`}>Server - 2 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploadrar480p}`}>Server - 3 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkMega4up480p}`}  >Server - 4 </a>
+                        <a target='_blank' href={`${alldata && alldata[0]?.dlinkUploady480p}`}>Server - 5 </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkGdrive480p}`}>G-Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkPhotojin480p}`}>Hub Drive </a>
                         <a target='_blank' href={`${alldata && alldata[0]?.dlinkHdcloud480p}`}>HD Cloud </a>

@@ -67,8 +67,9 @@ export default function moviesPost() {
         <>
 
             <Head>
-                <title> {alldata && alldata[0]?.slug} Free </title>
+                <title> {alldata && alldata[0]?.title} - Movie Download & Streaming </title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/3d-movie.ico"/>
             </Head>
 
             {loading ? <div className="slideimagebx flex flex-center"><Loader /> </div> : <>
