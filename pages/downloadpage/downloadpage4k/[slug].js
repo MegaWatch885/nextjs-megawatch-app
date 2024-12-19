@@ -4,6 +4,7 @@ import useFetchData from "@/hooks/useFetchData";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import { FaArrowRight, FaEye, FaHeart, FaStar } from "react-icons/fa";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function download4k() {
 
@@ -109,8 +110,6 @@ export default function download4k() {
                 </div>
 
             </div>
-
-
 
         </>
 

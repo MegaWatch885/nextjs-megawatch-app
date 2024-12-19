@@ -14,6 +14,7 @@ import WelcomeAnimation from "@/components/WelcomeAnimation";
 import { RiMovie2Fill, RiMovieFill } from "react-icons/ri";
 import { GiGhost, GiMagicBroom, GiMagickTrick } from "react-icons/gi";
 import { BiCameraMovie } from "react-icons/bi";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
 
@@ -79,10 +80,10 @@ export default function Home() {
       <Head>
         <title>MegaWatch - Download Latest Movies & Series</title>
         <meta name="description" content="Download & Streaming Latest Movies & Web Series For Free" />
-        <meta name="keywords" content="MegaWatch, Megawatch, megawatch, megawatch.in, Megawatch.in, MegaWatch.in latest movies download, bollywood movies download, latest series download "/>
+        <meta name="keywords" content="MegaWatch, Megawatch, megawatch, megawatch.in, Megawatch.in, MegaWatch.in latest movies download, bollywood movies download, latest series download " />
         <meta property="og:title" content="MegaWatch | Rk" />
         <meta property="og:description" content="You Can Latest Movies Straeming & Downloading Here" />
-        <link rel="icon" href="/3d-movie.ico"/>
+        <link rel="icon" href="/3d-movie.ico" />
         <meta name="monetag" content="2ee5866ef88d462738787d3b34732eb7"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -112,7 +113,7 @@ export default function Home() {
                     <div className="slideimagebx">
                       {/* slideshow background image */}
                       <Link href={`/movies/${movie.slug}`}>
-                      <img src={movie.bgposter} alt="movie" loading="lazy" />
+                        <img src={movie.bgposter} alt="movie" loading="lazy" />
                       </Link>
                       {/* content */}
                       <div className="content" key={movie._id}>
@@ -141,7 +142,7 @@ export default function Home() {
 
                     </div>
                   </SwiperSlide>
-                  
+
                 })}
 
               </>}
@@ -269,7 +270,7 @@ export default function Home() {
             <li><Link href={'/genre/korean_drama'} ><i><RiMovie2Fill className="fas" /></i>K-Drama</Link></li>
             <li><Link href={'/genre/cheinese_drama'} ><i><RiMovieFill className="fas" /></i>C-Drama</Link></li>
             <li><Link href={'/genre/horror'} ><i><GiGhost className="fas" /></i>Horror</Link></li>
-            
+
           </div>
 
           <div className="moviestegs">
@@ -291,7 +292,7 @@ export default function Home() {
           <div className="moviescontainer">
             {loading ? <div className="scrollcardssec flex flex-center h-15v"><Loader /></div> : <>
               {filteredData.length === 0 ? <p className="nodatafound">No Movie Found</p> : <>
-                {filteredData.slice(0,50).map((movie) => (
+                {filteredData.slice(0, 50).map((movie) => (
                   <div className="card" key={movie._id}>
                     <Link href={`/movies/${movie.slug}`}>
                       <div className="cardimg">
@@ -337,7 +338,7 @@ export default function Home() {
 
       </div>
 
-
+      <SpeedInsights />
 
 
     </>
