@@ -58,13 +58,26 @@ export default function watchep14() {
                     <center>
                         <div className="epstreaming">
                             <iframe width="80%" height="420"
-                                src={alldata && alldata[0]?.watchEp14} frameBorder="0" allowFullScreen="allowFullScreen">
+                                src={alldata && alldata[0]?.watchEp14} frameBorder="0" allowFullScreen="allowFullScreen" name="player">
                             </iframe>
                         </div>
                     </center>
                 </div>
 
-                <div className="epwatch">
+                <div className="btngroup">
+
+                    <a href={alldata && alldata[0]?.watchEp14} target="player"><button>Server 1</button></a>
+                    <a href={alldata && alldata[0]?.watchEp14s2} target="player"><button>Server 2</button></a>
+                    <a href={alldata && alldata[0]?.watchEp14s3} target="player"><button>Server 3</button></a>
+
+
+                </div>
+
+
+           
+            </div>
+
+            <div className="epwatch">
                     <center>
                         <div className="watchonlinemovie">
                             <h3 className="uppercase"> Note:- Its Series Have {alldata && alldata[0]?.duration} So Other EP Buttons Didn't Work</h3>
@@ -119,9 +132,6 @@ export default function watchep14() {
 
 
                 </div>
-
-
-            </div>
 
             {/* Latest Movies */}
             <div>

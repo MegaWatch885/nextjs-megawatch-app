@@ -19,9 +19,9 @@ export default function genres() {
 
     // filter for published movies requires
 
-    const filteredMovies = alldata.filter(ab => ab.genre === ab.genre).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 20);
+    const filteredMovies = alldata.filter(ab => ab.genre === ab.genre).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    const genremovies = [...filteredMovies].reverse();
+    const genremovies = [...filteredMovies];
 
     const capitalizeTitle = (str) => {
         return str.toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');

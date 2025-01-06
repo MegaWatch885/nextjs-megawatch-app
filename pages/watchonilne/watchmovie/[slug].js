@@ -4,8 +4,6 @@ import useFetchData from "@/hooks/useFetchData";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import { FaArrowRight, FaEye, FaHeart, FaStar } from "react-icons/fa";
-import { useState } from "react";
-import Script from "next/script";
 
 
 
@@ -41,7 +39,7 @@ export default function watchmovieonline() {
         <>
 
             <Head>
-                <title>{alldata && alldata[0]?.title}-Online-Watch-links</title>
+                <title>{alldata && alldata[0]?.title}-Streaming</title>
                 <link rel="icon" href="/3d-movie.ico" />
             </Head>
 
@@ -62,7 +60,7 @@ export default function watchmovieonline() {
 
                     <center>
                         <iframe width="80%" height="420"
-                            src={alldata && alldata[0]?.watchonline} frameBorder="0" allowFullScreen="allowFullScreen" name="player">
+                            src={alldata && alldata[0]?.watchonline} frameBorder="0" allowFullScreen="allowFullScreen" name="player" alt="Server Not Availabe">
                         </iframe>
 
                     </center>
@@ -71,15 +69,14 @@ export default function watchmovieonline() {
                 <div className="btngroup">
 
                     <a href={alldata && alldata[0]?.watchonline} target="player"><button>Server 1</button></a>
-                    <a href={alldata && alldata[0]?.watchonline2} target="player"><button>Server 2</button></a>
+                    <a href={alldata && alldata[0]?.watchonline2} alt="Server not availabe" target="player"><button>Server 2</button></a>
+                    <a href={alldata && alldata[0]?.watchonline3} target="player"><button>Server 3</button></a>
+
 
                 </div>
 
                 
             </div>
-
-    
-
 
 
         {/* Latest Movies */}
@@ -135,6 +132,8 @@ export default function watchmovieonline() {
             </div>
 
         </div>
+
+       
 
     </>
 
