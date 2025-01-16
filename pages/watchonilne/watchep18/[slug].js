@@ -57,7 +57,7 @@ export default function watchep18() {
                     <center>
                         <div className="epstreaming">
                             <iframe width="80%" height="420"
-                                src={alldata && alldata[0]?.watchEp18} frameBorder="0" allowFullScreen="allowFullScreen" name="player">
+                                src={alldata && alldata[0]?.watchEp18} frameBorder="0" allowFullScreen="allowFullScreen" name="player" loading="lazy">
                             </iframe>
                         </div>
                     </center>

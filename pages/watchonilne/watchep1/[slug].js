@@ -57,7 +57,7 @@ export default function watchep1() {
                 <center>
                     <div className="watchonlinemovie">
                         <iframe width="80%" height="420"
-                            src={alldata && alldata[0]?.watchep01} frameBorder="0" allowFullScreen="allowFullScreen" name="player">
+                            src={alldata && alldata[0]?.watchep01} frameBorder="0" allowFullScreen="allowFullScreen" name="player" loading="lazy">
                         </iframe>
                     </div>
                 </center>

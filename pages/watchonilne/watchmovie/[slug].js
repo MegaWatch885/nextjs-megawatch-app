@@ -60,7 +60,7 @@ export default function watchmovieonline() {
 
                     <center>
                         <iframe width="80%" height="420"
-                            src={alldata && alldata[0]?.watchonline} frameBorder="0" allowFullScreen="allowFullScreen" name="player" alt="Server Not Availabe">
+                            src={alldata && alldata[0]?.watchonline} frameBorder="0" allowFullScreen="allowFullScreen" name="player" loading="lazy">
                         </iframe>
 
                     </center>
@@ -69,8 +69,8 @@ export default function watchmovieonline() {
                 <div className="btngroup">
 
                     <a href={alldata && alldata[0]?.watchonline} target="player"><button>Server 1</button></a>
-                    <a href={alldata && alldata[0]?.watchonline2} alt="Server not availabe" target="player"><button>Server 2</button></a>
-                    <a href={alldata && alldata[0]?.watchonline3} target="player"><button>Server 3</button></a>
+                    <a href={alldata && alldata[0]?.watchonline1} target="player"><button>Server 2</button></a>
+                    <a href={alldata && alldata[0]?.watchonline2} target="player"><button>Server 3</button></a>
 
 
                 </div>

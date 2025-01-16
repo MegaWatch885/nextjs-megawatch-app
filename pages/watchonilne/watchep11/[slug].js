@@ -55,7 +55,7 @@ export default function watchep11() {
                     <p className="uppercase">Total Episode's :- {alldata && alldata[0]?.duration}</p>
                     <center>
                         <iframe width="80%" height="420"
-                            src={alldata && alldata[0]?.watchEp11} frameBorder="0" allowFullScreen="allowFullScreen" name="player">
+                            src={alldata && alldata[0]?.watchEp11} frameBorder="0" allowFullScreen="allowFullScreen" name="player" loading="lazy">
                         </iframe>
                     </center>
                 </div>

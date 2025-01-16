@@ -19,7 +19,7 @@ export default function genres() {
 
     // filter for published movies requires
 
-    const filteredMovies = alldata.filter(ab => ab.genre === ab.genre).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    const filteredMovies = alldata.filter(ab => ab.genre === ab.genre).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt) );
 
     const genremovies = [...filteredMovies];
 
